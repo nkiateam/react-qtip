@@ -1,5 +1,5 @@
 {
-  "name": "polestar-antd",
+  "name": "react-qtip",
   "version": "1.0.0",
   "description": "",
   "main": "./lib/react-sample.js",
@@ -35,8 +35,7 @@
   },
   "keywords": [
     "React",
-    "AntDesign",
-    "Polestar"
+    "Qtip"
   ],
   "author": "NKIA",
   "license": "MIT"
