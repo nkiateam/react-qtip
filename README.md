@@ -1,11 +1,11 @@
-# polestar-antd
+# react-qtip
 
 ## Dependencies
 
 ## Install
 
 ```
-npm install polestar-antd --save-dev
+npm install react-qtip --save-dev
 ```
 
 ## Build
