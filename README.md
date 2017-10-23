@@ -17,6 +17,9 @@ npm install react-qtip --save-dev
 
 ## Configuration webpack
 
+## Configuration css
+- Import **examples/jquery.qtip.css** to your application.
+
 ## Example
 
 ```
