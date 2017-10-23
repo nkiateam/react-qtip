@@ -2,13 +2,15 @@
   "name": "react-qtip",
   "version": "1.0.0",
   "description": "",
-  "main": "./lib/react-sample.js",
+  "main": "./src/index.js",
   "scripts": {
     "prepublish": "babel ./src -d lib",
     "example": "webpack-dev-server"
   },
   "dependencies": {
+    "jquery": "^3.2.1",
     "prop-types": "^15.6.0",
+    "qtip2": "^3.0.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0"
   },
