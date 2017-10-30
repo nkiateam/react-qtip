@@ -21,7 +21,7 @@ npm install react-qtip --save-dev
 - Import **examples/jquery.qtip.css** to your application.
 
 ## Example
-- http://
+- https://nkiateam.github.io/react-qtip/
 
 ```
 예시 코드 삽입
