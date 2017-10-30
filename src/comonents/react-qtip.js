@@ -213,7 +213,7 @@ class QTooltip extends Component {
         y: 0,
         mouse: true,
         resize: true,
-        adjustMethod: 'flipinvert flipinvert',
+        adjustMethod: 'flip shift',
         adjustScroll: true,
         positionEffect: (api, pos) => {
             $(this).animate(pos, {
