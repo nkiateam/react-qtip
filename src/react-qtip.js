@@ -11,29 +11,59 @@ class QTooltip extends Component {
         /** true, false(Default: false) - Render tooltip HTML on $(document).ready() */
         prerender: PropTypes.bool,
         /** "String", false (Default: false) - Incremental numerical ID used by default */
-        id: PropTypes.string,
+        id: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+        ]),
         /** true, false (Default: true) - Overwrite previous tooltips on this element */
         overwrite: PropTypes.bool,
         /** true, false (Default: true) - Translate 'title' to 'oldtitle' attribute (prevent browser tooltip) */
         suppress: PropTypes.bool,
         /** Deferred, function(){}, jQuery([ ]), "String", true (Default: true) */
-        title: PropTypes.object,
+        title: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+            PropTypes.node,
+            PropTypes.func,
+        ]),
         /** Deferred, function(){}, jQuery([ ]), "String", true (Default: true) */
-        text: PropTypes.object,
+        text: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+            PropTypes.node,
+            PropTypes.func,
+        ]),
         /** "String" (Default: "title") */
         attr: PropTypes.string,
         /** jQuery([ ]), "String", true, false (Default: false) */
-        button: PropTypes.object,
+        button: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+            PropTypes.node,
+        ]),
         /** "Corner", false (Default: "top left") */
         my: PropTypes.string,
         /** "Corner", false (Default: "bottom right") */
         at: PropTypes.string,
         /** jQuery([ ]), [x, y], "mouse", "event", false (Default: false) - Defaults to target element */
-        target: PropTypes.object,
+        target: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+            PropTypes.node,
+            PropTypes.array,
+        ]),
         /** jQuery([ ]), false (Default: document.body), Defaults to $(document.body) */
-        container: PropTypes.object,
+        container: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.node,
+            PropTypes.object,
+        ]),
         /** jQuery([ ]), true, false (Default: false) - Requires Viewport plugin */
-        viewport: PropTypes.object,
+        viewport: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.node,
+            PropTypes.func,
+        ]),
         /** Integer (Default: 0) - Minor x adjustments */
         x: PropTypes.number,
         /** Integer (Default: 0) - Minor y adjustments */
@@ -49,35 +79,61 @@ class QTooltip extends Component {
         /** Function, false (Default: see below) */
         positionEffect: PropTypes.func,
         /** jQuery([]), false (Default: false) - Defaults to target element */
-        showTarget: PropTypes.object,
+        showTarget: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.node,
+        ]),
         /** "String", false (Default: "mouseenter") - Show on mouse over by default */
         showEvent: PropTypes.string,
         /** function(){}, true, false (Default: true) - Use default 90ms fade effect */
-        showEffect: PropTypes.func,
+        showEffect: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.func,
+        ]),
         /** Integer (Default: 90) - 90ms delay before showing */
         showDelay: PropTypes.number,
         /** jQuery([]), String, true, false (Default: false) - Do not hide others when showing */
-        showSolo: PropTypes.object,
+        showSolo: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+            PropTypes.node,
+        ]),
         /** true, false (Default: false) - Do not show immediately */
         showReady: PropTypes.bool,
         /** jQuery([]), String, true, false (Default: false) - Selector that will match the element within the tooltip to auto focus */
-        showAutoFocus: PropTypes.object,
+        showAutoFocus: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+            PropTypes.node,
+        ]),
         /** jQuery([]), false (Default: false) - Defaults to target element */
-        hideTarget: PropTypes.object,
+        hideTarget: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.func,
+        ]),
         /** "String", false (Default: "mouseleave") - Hide on mouse out by default */
         hideEvent: PropTypes.string,
         /** Function, true, false (Default: true) - Use default 90ms fade effect */
-        hideEffect: PropTypes.func,
+        hideEffect: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.func,
+        ]),
         /** Integer (Default: 0) - No hide delay by default */
         hideDelay: PropTypes.number,
         /** true, false (Default: false) - Non-hoverable by default */
         hideFixed: PropTypes.bool,
         /** Integer, false (Default: false) - Do not hide when inactive */
-        hideInactive: PropTypes.number,
+        hideInactive: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.bool,
+        ]),
         /** "window", false (Default: "window") - Hide when we leave the window */
         hideLeave: PropTypes.string,
         /** Integer, false (Default: false) - Don't hide after a set distance */
-        hideDistance: PropTypes.number,
+        hideDistance: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.bool,
+        ]),
         /** "String", false (Default: "") - No additional classes added to .qtip element */
         classes: PropTypes.string,
         /** true, false (Default: false) - Not a jQuery UI widget */
@@ -86,22 +142,33 @@ class QTooltip extends Component {
         width: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number,
+            PropTypes.bool,
         ]),
         /** "String", Integer, false (Default: false) - No set height */
         height: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number,
+            PropTypes.bool,
         ]),
         /** true, "Corner", false (Default: true) - Use position.my by default */
-        tipCorner: PropTypes.string,
+        tipCorner: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+        ]),
         /** "Corner", false (Default: false) - Don't mimic a particular corner */
-        tipMimic: PropTypes.string,
+        tipMimic: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.bool,
+        ]),
         /** Integer (Default: 6) - Height of tooltip */
         tipWidth: PropTypes.number,
         /** Integer (Default: 6) - Width of tooltip */
         tipHeight: PropTypes.number,
         /** true, Integer (Default: true) - Detect border from tooltip style */
-        tipBorder: PropTypes.number,
+        tipBorder: PropTypes.oneOfType([
+            PropTypes.number,
+            PropTypes.bool,
+        ]),
         /** Integer (Default: 0) - Do not apply an offset from corner */
         tipOffset: PropTypes.number,
         /** Called when tooltip rendered */
