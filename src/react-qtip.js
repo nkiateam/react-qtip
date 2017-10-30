@@ -3,69 +3,125 @@ import PropTypes from 'prop-types';
 import $ from 'jquery';
 import 'qtip2';
 
+/**
+ *  QTooltip(react-qtip) is react-based implementation of qtip2(http://qtip2.com)
+ */
 class QTooltip extends Component {
-
-    static PropTypes = {
-        prerender: PropTypes.bool, // true, false(Default: false) - Render tooltip HTML on $(document).ready()
-        id: PropTypes.string, // "String", false (Default: false) - Incremental numerical ID used by default
-        overwrite: PropTypes.bool, // true, false (Default: true) - Overwrite previous tooltips on this element
-        suppress: PropTypes.bool, // true, false (Default: true) - Translate 'title' to 'oldtitle' attribute (prevent browser tooltip)
-        title: PropTypes.object, // Deferred, function(){}, jQuery([ ]), "String", true (Default: true)
-        text: PropTypes.object, // Deferred, function(){}, jQuery([ ]), "String", true (Default: true)
-        attr: PropTypes.string, // "String" (Default: "title")
-        button: PropTypes.object, // jQuery([ ]), "String", true, false (Default: false)
-        my: PropTypes.string, // "Corner", false (Default: "top left")
-        at: PropTypes.string, // "Corner", false (Default: "bottom right")
-        target: PropTypes.object, // jQuery([ ]), [x, y], "mouse", "event", false (Default: false) - Defaults to target element
-        container: PropTypes.object, // jQuery([ ]), false (Default: document.body), Defaults to $(document.body)
-        viewport: PropTypes.object, // jQuery([ ]), true, false (Default: false) - Requires Viewport plugin
-        x: PropTypes.number, // Integer (Default: 0) - Minor x adjustments
-        y: PropTypes.number, // Integer (Default: 0) - Minor y adjustments
-        mouse: PropTypes.bool, // true, false (Default: true) - Follow mouse when using target:'mouse'
-        resize: PropTypes.bool, // true, false (Default: true) - Reposition on resize by default
-        adjustMethod: PropTypes.string, // "{flip|flipinvert|shift|none} {flip|flipinvert|shift|none}" (Default: "flipinvert") - Requires Viewport plugin,
-        adjustScroll: PropTypes.bool, // true, false (Default: true)
-        positionEffect: PropTypes.func, // Function, false (Default: see below)
-        showTarget: PropTypes.object, // jQuery([]), false (Default: false) - Defaults to target element
-        showEvent: PropTypes.string, // "String", false (Default: "mouseenter") - Show on mouse over by default
-        showEffect: PropTypes.func, // function(){}, true, false (Default: true) - Use default 90ms fade effect
-        showDelay: PropTypes.number, // Integer (Default: 90) - 90ms delay before showing
-        showSolo: PropTypes.object, // jQuery([]), String, true, false (Default: false) - Do not hide others when showing
-        showReady: PropTypes.bool, // true, false (Default: false) - Do not show immediately
-        showAutoFocus: PropTypes.object, // jQuery([]), String, true, false (Default: false) - Selector that will match the element within the tooltip to auto focus
-        hideTarget: PropTypes.object, // jQuery([]), false (Default: false) - Defaults to target element
-        hideEvent: PropTypes.string, // "String", false (Default: "mouseleave") - Hide on mouse out by default
-        hideEffect: PropTypes.func, // Function, true, false (Default: true) - Use default 90ms fade effect
-        hideDelay: PropTypes.number, // Integer (Default: 0) - No hide delay by default
-        hideFixed: PropTypes.bool, // true, false (Default: false) - Non-hoverable by default
-        hideInactive: PropTypes.number, // Integer, false (Default: false) - Do not hide when inactive
-        hideLeave: PropTypes.string, // "window", false (Default: "window") - Hide when we leave the window
-        hideDistance: PropTypes.number, // Integer, false (Default: false) - Don't hide after a set distance
-        classes: PropTypes.string, // "String", false (Default: "") - No additional classes added to .qtip element
-        widget: PropTypes.bool, // true, false (Default: false) - Not a jQuery UI widget
-        width: PropTypes.oneOfType([ // "String", Integer, false (Default: false) - No set width
+    static propTypes = {
+        /** true, false(Default: false) - Render tooltip HTML on $(document).ready() */
+        prerender: PropTypes.bool,
+        /** "String", false (Default: false) - Incremental numerical ID used by default */
+        id: PropTypes.string,
+        /** true, false (Default: true) - Overwrite previous tooltips on this element */
+        overwrite: PropTypes.bool,
+        /** true, false (Default: true) - Translate 'title' to 'oldtitle' attribute (prevent browser tooltip) */
+        suppress: PropTypes.bool,
+        /** Deferred, function(){}, jQuery([ ]), "String", true (Default: true) */
+        title: PropTypes.object,
+        /** Deferred, function(){}, jQuery([ ]), "String", true (Default: true) */
+        text: PropTypes.object,
+        /** "String" (Default: "title") */
+        attr: PropTypes.string,
+        /** jQuery([ ]), "String", true, false (Default: false) */
+        button: PropTypes.object,
+        /** "Corner", false (Default: "top left") */
+        my: PropTypes.string,
+        /** "Corner", false (Default: "bottom right") */
+        at: PropTypes.string,
+        /** jQuery([ ]), [x, y], "mouse", "event", false (Default: false) - Defaults to target element */
+        target: PropTypes.object,
+        /** jQuery([ ]), false (Default: document.body), Defaults to $(document.body) */
+        container: PropTypes.object,
+        /** jQuery([ ]), true, false (Default: false) - Requires Viewport plugin */
+        viewport: PropTypes.object,
+        /** Integer (Default: 0) - Minor x adjustments */
+        x: PropTypes.number,
+        /** Integer (Default: 0) - Minor y adjustments */
+        y: PropTypes.number,
+        /** true, false (Default: true) - Follow mouse when using target:'mouse' */
+        mouse: PropTypes.bool,
+        /** true, false (Default: true) - Reposition on resize by default */
+        resize: PropTypes.bool,
+        /** "{flip|flipinvert|shift|none} {flip|flipinvert|shift|none}" (Default: "flipinvert") - Requires Viewport plugin, */
+        adjustMethod: PropTypes.string,
+        /** true, false (Default: true) */
+        adjustScroll: PropTypes.bool,
+        /** Function, false (Default: see below) */
+        positionEffect: PropTypes.func,
+        /** jQuery([]), false (Default: false) - Defaults to target element */
+        showTarget: PropTypes.object,
+        /** "String", false (Default: "mouseenter") - Show on mouse over by default */
+        showEvent: PropTypes.string,
+        /** function(){}, true, false (Default: true) - Use default 90ms fade effect */
+        showEffect: PropTypes.func,
+        /** Integer (Default: 90) - 90ms delay before showing */
+        showDelay: PropTypes.number,
+        /** jQuery([]), String, true, false (Default: false) - Do not hide others when showing */
+        showSolo: PropTypes.object,
+        /** true, false (Default: false) - Do not show immediately */
+        showReady: PropTypes.bool,
+        /** jQuery([]), String, true, false (Default: false) - Selector that will match the element within the tooltip to auto focus */
+        showAutoFocus: PropTypes.object,
+        /** jQuery([]), false (Default: false) - Defaults to target element */
+        hideTarget: PropTypes.object,
+        /** "String", false (Default: "mouseleave") - Hide on mouse out by default */
+        hideEvent: PropTypes.string,
+        /** Function, true, false (Default: true) - Use default 90ms fade effect */
+        hideEffect: PropTypes.func,
+        /** Integer (Default: 0) - No hide delay by default */
+        hideDelay: PropTypes.number,
+        /** true, false (Default: false) - Non-hoverable by default */
+        hideFixed: PropTypes.bool,
+        /** Integer, false (Default: false) - Do not hide when inactive */
+        hideInactive: PropTypes.number,
+        /** "window", false (Default: "window") - Hide when we leave the window */
+        hideLeave: PropTypes.string,
+        /** Integer, false (Default: false) - Don't hide after a set distance */
+        hideDistance: PropTypes.number,
+        /** "String", false (Default: "") - No additional classes added to .qtip element */
+        classes: PropTypes.string,
+        /** true, false (Default: false) - Not a jQuery UI widget */
+        widget: PropTypes.bool,
+        /** "String", Integer, false (Default: false) - No set width */
+        width: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number,
         ]),
-        height: PropTypes.oneOfType([ // "String", Integer, false (Default: false) - No set height
+        /** "String", Integer, false (Default: false) - No set height */
+        height: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.number,
         ]),
-        tipCorner: PropTypes.string, // true, "Corner", false (Default: true) - Use position.my by default
-        tipMimic: PropTypes.string, // "Corner", false (Default: false) - Don't mimic a particular corner
-        tipWidth: PropTypes.number, // Integer (Default: 6)
-        tipHeight: PropTypes.number, // Integer (Default: 6)
-        tipBorder: PropTypes.number, // true, Integer (Default: true) - Detect border from tooltip style
-        tipOffset: PropTypes.number, // Integer (Default: 0) - Do not apply an offset from corner
-        onRender: PropTypes.func, // Called when tooltip rendered
-        onMove: PropTypes.func, // Called when tooltip repositioned
-        onShow: PropTypes.func, // Called when tooltip is about to be shown
-        onHide: PropTypes.func, // Called when tooltip is about to be hidden
-        onToggle: PropTypes.func, // Shortcut to binding to two events above
-        onVisible: PropTypes.func, // Called when tooltip is shown
-        onHidden: PropTypes.func, // Called when tooltip is hidden
-        onFocus: PropTypes.func, // Called when tooltip gains focus
-        onBlur: PropTypes.func, // Called when tooltip loses focus
+        /** true, "Corner", false (Default: true) - Use position.my by default */
+        tipCorner: PropTypes.string,
+        /** "Corner", false (Default: false) - Don't mimic a particular corner */
+        tipMimic: PropTypes.string,
+        /** Integer (Default: 6) - Height of tooltip */
+        tipWidth: PropTypes.number,
+        /** Integer (Default: 6) - Width of tooltip */
+        tipHeight: PropTypes.number,
+        /** true, Integer (Default: true) - Detect border from tooltip style */
+        tipBorder: PropTypes.number,
+        /** Integer (Default: 0) - Do not apply an offset from corner */
+        tipOffset: PropTypes.number,
+        /** Called when tooltip rendered */
+        onRender: PropTypes.func,
+        /** Called when tooltip repositioned */
+        onMove: PropTypes.func,
+        /** Called when tooltip is about to be shown */
+        onShow: PropTypes.func,
+        /** Called when tooltip is about to be hidden */
+        onHide: PropTypes.func,
+        /** Shortcut to binding to two events above */
+        onToggle: PropTypes.func,
+        /** Called when tooltip is shown */
+        onVisible: PropTypes.func,
+        /** Called when tooltip is hidden */
+        onHidden: PropTypes.func,
+        /** Called when tooltip gains focus */
+        onFocus: PropTypes.func,
+        /** Called when tooltip loses focus */
+        onBlur: PropTypes.func,
     };
 
     static defaultProps = {
