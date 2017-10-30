@@ -1,8 +1,7 @@
 module.exports = {
     serverPort: 4001,
-    components: './src/[A-z]*.{js,jsx}',
+    components: './src/**/[A-z]*.{js,jsx}',
     require: [
-        './examples/jquery.qtip.css',
         './examples/example.css',
     ],
 

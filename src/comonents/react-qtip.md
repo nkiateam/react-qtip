@@ -1,5 +1,6 @@
 ### HTML, Text and Ajax:
 ```js
+const $ = require('jquery');
 const ajaxContent = (event, api) => {
     $.ajax({
         url: 'http://qtip2.com/demos/data/owl', // Use href attribute as URL
@@ -62,7 +63,7 @@ const ajaxContent = (event, api) => {
                             </QTooltip>
                         </li>
                         <li>
-                            <QTooltip text="<iframe src='http://html5rocks.com' />" hideFixed="true">
+                            <QTooltip text="<iframe src='http://html5rocks.com' />" hideFixed>
                                 Embedded &lt;iframe&gt;
                             </QTooltip>
                         </li>
@@ -115,7 +116,7 @@ const ajaxContent = (event, api) => {
                 <li>
                     <QTooltip
                         text="You can interact with my contents by mousing onto me. Click my <a href='http://google.com'>link!</a>"
-                        hideFixed="true"
+                        hideFixed
                         hideDelay={300}
                     >
                         <span>Stay visible when mousing onto tooltip</span>
@@ -161,6 +162,7 @@ const ajaxContent = (event, api) => {
 ```
 ### Show and Hide effect
 ```js
+const $ = require('jquery');
 <div id="content">
     <div className="category group">
          <h2>Show and Hide effect</h2>

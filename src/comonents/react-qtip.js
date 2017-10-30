@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import $ from 'jquery';
 import 'qtip2';
+import './jquery.qtip.css';
 
 /**
  *  QTooltip(react-qtip) is react-based implementation of qtip2(http://qtip2.com)
@@ -112,7 +113,10 @@ class QTooltip extends Component {
             PropTypes.func,
         ]),
         /** "String", false (Default: "mouseleave") - Hide on mouse out by default */
-        hideEvent: PropTypes.string,
+        hideEvent: PropTypes.oneOfType([
+            PropTypes.bool,
+            PropTypes.string,
+        ]),
         /** Function, true, false (Default: true) - Use default 90ms fade effect */
         hideEffect: PropTypes.oneOfType([
             PropTypes.bool,

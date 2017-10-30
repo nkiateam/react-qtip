@@ -1,9 +1,9 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
     entry: [
-        './examples/src/App.js',
+        './examples/src/index.js',
     ],
     output: {
         publicPath: '/examples',
@@ -14,7 +14,11 @@ module.exports = {
         inline: true,
         host: '0.0.0.0',
         port: 4000,
-        contentBase: __dirname,
+        hot: true,
+        historyApiFallback: {
+            index: 'index.html',
+        },
+        contentBase: path.join(__dirname, './examples'),
     },
 
     module: {
@@ -28,6 +32,21 @@ module.exports = {
                 },
                 exclude: /node_modules/,
             },
+            {
+                test: /\.css$/,
+                use: [
+                    require.resolve('style-loader'),
+                    {
+                        loader: require.resolve('css-loader'),
+                        options: {
+                            importLoaders: 1,
+                        },
+                    },
+                ]
+            },
         ],
     },
+    plugins: [
+        new webpack.HotModuleReplacementPlugin(),
+    ],
 };

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import $ from 'jquery';
 
-import QTooltip from '../../lib/react-qtip';
+import QTooltip from '../../lib/comonents/react-qtip';
 
 class Example extends Component {
     render() {
@@ -69,7 +69,7 @@ class Example extends Component {
                                     </QTooltip>
                                 </li>
                                 <li>
-                                    <QTooltip text="<iframe src='http://html5rocks.com' />" hideFixed="true">
+                                    <QTooltip text="<iframe src='http://html5rocks.com' />" hideFixed>
                                         Embedded &lt;iframe&gt;
                                     </QTooltip>
                                 </li>
@@ -109,7 +109,7 @@ class Example extends Component {
                                 <li>
                                     <QTooltip
                                         text="You can interact with my contents by mousing onto me. Click my <a href='http://google.com'>link!</a>"
-                                        hideFixed="true"
+                                        hideFixed
                                         hideDelay={300}
                                     >
                                         <span>Stay visible when mousing onto tooltip</span>
