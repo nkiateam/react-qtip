@@ -1,5 +1,7 @@
 # react-qtip
 [![npm](https://img.shields.io/npm/v/react-qtip.svg)](https://www.npmjs.com/package/react-qtip)
+[![Dependencies](https://img.shields.io/david/nkiateam/react-qtip.svg)](https://github.com/nkiateam/react-qtip)
+[![DevDependencies](https://img.shields.io/david/dev/nkiateam/react-qtip.svg)](https://github.com/nkiateam/react-qtip)
 [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/nkiateam/react-qtip/master/LICENSE)
 
 react-qtip is react-based implementation of qtip2(http://qtip2.com)
