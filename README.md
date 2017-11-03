@@ -7,23 +7,24 @@
 
 react-qtip is react-based implementation of qtip2(http://qtip2.com)
 
-## Install
+## Installation
 
-```
+```sh
 npm install react-qtip --save-dev
 ```
 
 ## Usage
-```js
+
+```jsx
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Tooltip from 'react-qtip';
 
-const App = () => {
+const App = () => (
     <Tooltip title="qtip2" text="qtip2 is one of the tooltip library">
         <a href='qtip2.com/'>Go to Qtip2</a>
     </Tooltip>
-};
+);
 
 ReactDOM.render(
   <App />,
@@ -32,11 +33,14 @@ ReactDOM.render(
 ```
 
 ## Demo Build
+
 - npm run examples
 - http://localhost:4000
 
 ## Example & Documentaion
+
 https://nkiateam.github.io/react-qtip/
 
 ## License
+
 [The MIT License (MIT)](/LICENSE)
