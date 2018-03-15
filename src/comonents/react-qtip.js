@@ -354,7 +354,7 @@ class QTooltip extends Component {
 
     render() {
         return (
-            <div ref={(c) => { this.tooltip = c; }}>
+            <div ref={(c) => { this.tooltip = c; }} style={{ display: 'inline' }}>
                 {this.props.children}
             </div>
         );
