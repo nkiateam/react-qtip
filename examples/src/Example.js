@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import $ from 'jquery';
 
 import QTooltip from '../../lib/comonents/react-qtip';
+import '../../lib/comonents/jquery.qtip.css';
 
 class Example extends Component {
     render() {
