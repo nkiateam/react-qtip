@@ -1,3 +1,3 @@
-import QTooltip from './comonents/react-qtip';
+import QTooltip from './components/react-qtip';
 
 export default QTooltip;
